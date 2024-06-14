@@ -34,3 +34,10 @@ futures = "0.3"
 
 rand_xoshiro = "0.6.0"
 rand = "0.8.5"
+
+[profile.maxperf]
+inherits = "release"
+opt-level = 3
+lto = true
+debug = false
+rpath = false

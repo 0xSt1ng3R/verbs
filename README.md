@@ -28,7 +28,7 @@ by running
 python3.11 -m venv .env
 source .env/bin/activate
 export HATCH_PYTHON=/usr/local/bin/python3.11
-hatch run dev:build
+RUSTFLAGS="-C target-cpu=native" hatch run dev:build
 ```
 
 ### Jupyter Notebook

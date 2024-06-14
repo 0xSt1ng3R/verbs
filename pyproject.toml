@@ -56,7 +56,7 @@ python = "3.11"
 develop = "maturin develop --release"
 lint = "pre-commit install && pre-commit run --all-files"
 test = "maturin develop --release && pytest -v tests"
-build = "maturin build --release"
+build = "maturin build --release --profile maxperf"
 examples = "maturin build --release && python examples/basic_sim.py && python examples/batch_runner.py"
 
 [tool.hatch.envs.notebook]

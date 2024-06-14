@@ -1,8 +1,6 @@
 use super::base_env::BaseEnv;
 use super::interface_macro::create_interface;
 use super::snapshot;
-use alloy_primitives::U256;
-use std::str::FromStr;
 use crate::types::{PyAddress, PyEvent, PyExecutionResult, PyRevertError, PyTransaction};
 use pyo3::prelude::*;
 use pyo3::types::PyBytes;

@@ -202,7 +202,6 @@ macro_rules! create_interface {
 
             pub fn insert_sc<'a>(
                 &mut self,
-                py: Python<'a>,
                 address: PyAddress,
                 bytecode: Vec<u8>
             ) -> PyResult<()> {
@@ -212,7 +211,6 @@ macro_rules! create_interface {
 
             pub fn insert_account_storage<'a>(
                 &mut self,
-                py: Python<'a>,
                 address: PyAddress,
                 slot: Vec<u8>,
                 value: Vec<u8>
