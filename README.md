@@ -24,7 +24,10 @@ Building VERBS requires [maturin to be installed](https://www.maturin.rs/install
 The Python package can be built using [hatch](https://hatch.pypa.io/latest/)
 by running
 
-```
+```bash
+python3.11 -m venv .env
+source .env/bin/activate
+export HATCH_PYTHON=/usr/local/bin/python3.11
 hatch run dev:build
 ```
 
