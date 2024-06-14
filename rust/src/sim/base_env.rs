@@ -168,6 +168,14 @@ impl<D: DB, V: Validator> BaseEnv<D, V> {
             }))
     }
 
+    pub fn insert_sc(&mut self, address: PyAddress, bytecode: Vec<u8>) {
+        self.env.insert_sc(Address::from_slice(&address), bytecode)
+    }
+
+    pub fn insert_account_storage(&mut self, address: PyAddress, slot: Vec<u8>, value: Vec<u8>) {
+        self.env.insert_account_storage(Address::from_slice(&address), U256::from_be_slice(&slot), U256::from_be_slice(&value));
+    }
+
     pub fn deploy_contract(
         &mut self,
         deployer: PyAddress,

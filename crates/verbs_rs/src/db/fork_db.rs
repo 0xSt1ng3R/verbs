@@ -149,6 +149,10 @@ impl DB for ForkDb {
         self.insert_account_info(address, account_info)
     }
 
+    fn insert_account_storage(&mut self, address: Address, slot: U256, value: U256) {
+        self.insert_account_storage(address, slot, value);
+    }
+
     fn accounts(&self) -> &HashMap<Address, DbAccount> {
         &self.accounts
     }

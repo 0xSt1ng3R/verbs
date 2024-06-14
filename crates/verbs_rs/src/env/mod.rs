@@ -13,7 +13,7 @@ mod validator;
 use crate::contract::{Event, Transaction};
 use crate::utils::Eth;
 use crate::{ForkDb, LocalDB, RequestCache, DB};
-use alloy_primitives::{Address, FixedBytes, B256, U256};
+use alloy_primitives::{Address, FixedBytes, B256, U256, Bytes};
 use alloy_sol_types::SolCall;
 use log::debug;
 use rand::Rng;
@@ -240,6 +240,16 @@ impl<D: DB, V: Validator> Env<D, V> {
             address,
             AccountInfo::new(start_balance, 0, B256::default(), Bytecode::default()),
         );
+    }
+
+    pub fn insert_sc(&mut self, address: Address, bytecode: Vec<u8>) {
+        self.evm_state().context.evm.db.insert_account_info(address,
+            AccountInfo::new(U256::ZERO, 0, B256::default(), Bytecode::LegacyRaw(Bytes::from(bytecode))),
+        );
+    }
+
+    pub fn insert_account_storage(&mut self, address: Address, slot: U256, value: U256) {
+        self.evm_state().context.evm.db.insert_account_storage(address, slot, value);
     }
 
     /// Insert multiple accounts into the DB

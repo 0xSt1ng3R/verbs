@@ -13,6 +13,7 @@ use revm::{
 /// allow the Db state to be exported from the Python API.
 pub trait DB: Database<Error = DatabaseError> + DatabaseCommit {
     fn insert_account_info(&mut self, address: Address, account_info: AccountInfo);
+    fn insert_account_storage(&mut self, address: Address, slot: U256, value: U256);
     fn accounts(&self) -> &HashMap<Address, DbAccount>;
     fn contracts(&self) -> &HashMap<B256, Bytecode>;
     fn logs(&self) -> &Vec<Log>;

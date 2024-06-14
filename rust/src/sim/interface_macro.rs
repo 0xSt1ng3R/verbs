@@ -200,6 +200,27 @@ macro_rules! create_interface {
                 ))
             }
 
+            pub fn insert_sc<'a>(
+                &mut self,
+                py: Python<'a>,
+                address: PyAddress,
+                bytecode: Vec<u8>
+            ) -> PyResult<()> {
+                self.0.insert_sc(address, bytecode);
+                Ok(())
+            }
+
+            pub fn insert_account_storage<'a>(
+                &mut self,
+                py: Python<'a>,
+                address: PyAddress,
+                slot: Vec<u8>,
+                value: Vec<u8>
+            ) -> PyResult<()> {
+                self.0.insert_account_storage(address, slot, value);
+                Ok(())
+            }            
+
             /// create_account(address: bytes, start_balance: int)
             ///
             /// Create an account
